@@ -1,11 +1,12 @@
 ﻿using System;
+using System.Diagnostics;
 using System.IO;
 
 namespace FcToThemis
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
             Console.Write("Enter Task name: ");
             string taskName = Console.ReadLine();
@@ -50,6 +51,12 @@ namespace FcToThemis
 
             Console.WriteLine($"Completed. {successfulTests}/{tests} copied.");
             Console.WriteLine($"Themis test folder is at \"{themisTestFolder}\".");
+
+            string args = $"/select, \"{themisTestFolder}\"";
+
+            ProcessStartInfo process = new ProcessStartInfo("explorer", args);
+            Process.Start(process);
+
             Console.ReadLine();
         }
     }
